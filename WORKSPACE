@@ -1,7 +1,20 @@
 workspace(name = "tradestar_strategy_core")
 
-
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
+    name = "contrib_rules_jvm",
+    remote = "https://github.com/bazel-contrib/rules_jvm",
+    tag = "v0.1.0",
+)
+
+load("@contrib_rules_jvm//:repositories.bzl", "contrib_rules_jvm_deps")
+
+contrib_rules_jvm_deps()
+
+load("@contrib_rules_jvm//:setup.bzl", "contrib_rules_jvm_setup")
+
+contrib_rules_jvm_setup()
 
 git_repository(
     name = "rules_jvm_external",
@@ -30,11 +43,19 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = [
-        "org.ta4j:ta4j-core:0.14",
+        "com.google.auto.value:auto-value:1.9",
+        "com.google.auto.value:auto-value-annotations:1.9",
+        "com.google.code.findbugs:jsr305:1.3.9",
+        "com.google.errorprone:error_prone_annotations:2.0.18",
         "com.google.guava:guava:31.0.1-jre",
         "com.google.inject:guice:5.0.1",
         "com.google.mug:mug:5.9",
+        "org.ta4j:ta4j-core:0.14",
+        # Test Only Artifacts
+        "com.google.inject.extensions:guice-testlib:5.1.0",
         "com.google.truth:truth:1.1.2",
+        "org.junit.platform:junit-platform-engine:1.5.0",
+        "org.junit.platform:junit-platform-launcher:1.5.0",
     ],
     repositories = [
         "https://repo1.maven.org/maven2",
