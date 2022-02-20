@@ -11,6 +11,16 @@ java_library(
 )
 
 java_library(
+    name = "bar_series_manager_factory",
+    srcs = ["BarSeriesManagerFactory.java"],
+    deps = [
+        "@maven//:org_ta4j_ta4j_core",
+        "@tradestar_protos//:candles_java_proto",
+        "@tradestar_protos//:exchanges_java_proto",
+    ],
+)
+
+java_library(
     name = "strategies_module",
     srcs = ["StrategiesModule.java"],
     visibility = ["//visibility:public"],
