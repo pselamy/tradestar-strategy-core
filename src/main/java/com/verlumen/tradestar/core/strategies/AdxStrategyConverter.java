@@ -2,9 +2,9 @@ package com.verlumen.tradestar.core.strategies;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Range;
-import com.verlumen.tradestar.protos.strategies.ADX;
 import com.verlumen.tradestar.protos.strategies.SignalStrength;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
+import com.verlumen.tradestar.protos.strategies.TradeStrategy.ADX;
 import org.ta4j.core.BarSeries;
 import org.ta4j.core.BaseStrategy;
 import org.ta4j.core.Rule;
