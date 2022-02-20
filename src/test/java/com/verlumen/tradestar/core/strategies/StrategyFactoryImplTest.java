@@ -4,7 +4,8 @@ import com.google.common.collect.ImmutableMap;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
-import com.verlumen.tradestar.protos.strategies.ADXParams;
+import com.verlumen.tradestar.protos.strategies.ADX;
+import com.verlumen.tradestar.protos.strategies.CompositeTradeStrategy;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,9 +29,13 @@ class StrategyFactoryImplTest {
             TradeStrategy> TRADE_STRATEGIES =
             ImmutableMap.<TradeStrategy.StrategyOneOfCase,
                             TradeStrategy>builder()
-                    .put(TradeStrategy.StrategyOneOfCase.ADX_PARAMS,
+                    .put(TradeStrategy.StrategyOneOfCase.COMPOSITE,
                             TradeStrategy.newBuilder()
-                                    .setAdxParams(ADXParams.getDefaultInstance())
+                                    .setComposite(CompositeTradeStrategy.getDefaultInstance())
+                                    .build())
+                    .put(TradeStrategy.StrategyOneOfCase.ADX,
+                            TradeStrategy.newBuilder()
+                                    .setAdx(ADX.getDefaultInstance())
                                     .build())
                     .buildOrThrow();
     private static final ImmutableMap<TradeStrategy.StrategyOneOfCase, FakeStrategyConverter> STRATEGY_CONVERTERS =

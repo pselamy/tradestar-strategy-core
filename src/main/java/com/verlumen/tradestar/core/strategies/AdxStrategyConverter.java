@@ -2,7 +2,7 @@ package com.verlumen.tradestar.core.strategies;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Range;
-import com.verlumen.tradestar.protos.strategies.ADXParams;
+import com.verlumen.tradestar.protos.strategies.ADX;
 import com.verlumen.tradestar.protos.strategies.SignalStrength;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
 import org.ta4j.core.BarSeries;
@@ -33,15 +33,15 @@ class AdxStrategyConverter implements StrategyConverter {
 
     @Override
     public Strategy convert(TradeStrategy params, BarSeries barSeries) {
-        return create(barSeries, params.getAdxParams());
+        return create(barSeries, params.getAdx());
     }
 
     @Override
     public TradeStrategy.StrategyOneOfCase supportedCase() {
-        return TradeStrategy.StrategyOneOfCase.ADX_PARAMS;
+        return TradeStrategy.StrategyOneOfCase.ADX;
     }
 
-    private Strategy create(BarSeries barSeries, ADXParams adxParams) {
+    private Strategy create(BarSeries barSeries, ADX adxParams) {
         checkArgument(adxParams.hasBarCount());
         checkArgument(adxParams.hasBuySignalStrength());
         checkArgument(adxParams.hasSellSignalStrength());
