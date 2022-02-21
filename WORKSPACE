@@ -46,7 +46,6 @@ maven_install(
     artifacts = [
         "com.google.guava:guava:31.0.1-jre",
         "com.google.inject:guice:5.0.1",
-        "com.google.mug:mug:5.9",
         "org.ta4j:ta4j-core:0.14",
         # Test Only Artifacts
         "com.google.inject.extensions:guice-testlib:5.1.0",
