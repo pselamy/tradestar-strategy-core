@@ -34,9 +34,6 @@ public class BarSeriesFactory {
     }
 
     public static <T> Stream<ImmutableList<T>> sliding(ImmutableList<T> list, int size) {
-        if (size > list.size())
-            return Stream.empty();
-
         return IntStream.rangeClosed(0, list.size() - size)
                 .mapToObj(start -> list.subList(start, start + size));
     }
