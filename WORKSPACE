@@ -48,7 +48,6 @@ maven_install(
         "com.google.inject:guice:5.0.1",
         "org.ta4j:ta4j-core:0.14",
         # Test Only Artifacts
-        "com.google.inject.extensions:guice-testlib:5.1.0",
         "com.google.truth:truth:1.1.2",
     ],
     repositories = [
