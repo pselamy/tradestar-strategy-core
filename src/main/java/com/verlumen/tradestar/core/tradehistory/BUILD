@@ -10,6 +10,7 @@ java_library(
 
 java_library(
     name = "bar_series_factory",
+    visibility = ["//visibility:public"],
     srcs = ["BarSeriesFactory.java"],
     deps = [
         ":bar_factory",
