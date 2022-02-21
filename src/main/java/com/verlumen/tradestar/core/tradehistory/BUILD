@@ -7,3 +7,13 @@ java_library(
         "@tradestar_protos//:candles_java_proto",
     ],
 )
+
+java_library(
+    name = "bar_series_factory",
+    srcs = ["BarSeriesFactory.java"],
+    deps = [
+        ":bar_factory",
+        "@maven//:org_ta4j_ta4j_core",
+        "@tradestar_protos//:candles_java_proto",
+    ],
+)
