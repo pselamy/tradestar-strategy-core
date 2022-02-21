@@ -44,10 +44,6 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = [
-        "com.google.auto.value:auto-value:1.9",
-        "com.google.auto.value:auto-value-annotations:1.9",
-        "com.google.code.findbugs:jsr305:1.3.9",
-        "com.google.errorprone:error_prone_annotations:2.0.18",
         "com.google.guava:guava:31.0.1-jre",
         "com.google.inject:guice:5.0.1",
         "com.google.mug:mug:5.9",
@@ -55,8 +51,6 @@ maven_install(
         # Test Only Artifacts
         "com.google.inject.extensions:guice-testlib:5.1.0",
         "com.google.truth:truth:1.1.2",
-        "org.junit.platform:junit-platform-engine:1.5.0",
-        "org.junit.platform:junit-platform-launcher:1.5.0",
     ],
     repositories = [
         "https://repo1.maven.org/maven2",
