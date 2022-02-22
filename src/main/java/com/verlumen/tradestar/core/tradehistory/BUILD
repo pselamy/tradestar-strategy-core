@@ -1,6 +1,7 @@
 java_library(
     name = "bar_factory",
     srcs = ["BarFactory.java"],
+    visibility = ["//src/test/java:__subpackages__"],
     deps = [
         ":granularity_spec",
         "@maven//:com_google_guava_guava",

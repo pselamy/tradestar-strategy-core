@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.ta4j.core.num.DecimalNum.valueOf;
 
-public class BarFactory {
+class BarFactory {
     static Bar create(Candle candle) {
         checkArgument(candle.hasGranularity());
         checkArgument(candle.hasStart());
