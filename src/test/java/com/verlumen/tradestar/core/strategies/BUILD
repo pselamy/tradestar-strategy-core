@@ -2,8 +2,8 @@ load("//:junit5.bzl", "java_junit5_test")
 
 # Use java_test after bazel officially support junit5
 java_junit5_test(
-    name = "strategy_factory_impl_test",
-    srcs = glob(["StrategyFactoryImplTest.java"]),
+    name = "strategy_factory_test",
+    srcs = glob(["StrategyFactoryTest.java"]),
     test_package = "com.verlumen.tradestar.core.strategies",
     deps = [
         "//src/main/java/com/verlumen/tradestar/core/strategies:strategy_converter",
