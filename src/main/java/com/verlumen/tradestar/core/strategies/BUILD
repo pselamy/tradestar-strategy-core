@@ -18,7 +18,6 @@ java_library(
         ":adx_strategy_converter",
         ":strategy_converter",
         ":strategy_factory",
-        ":strategy_factory_impl",
         "@maven//:com_google_inject_guice",
     ],
 )
