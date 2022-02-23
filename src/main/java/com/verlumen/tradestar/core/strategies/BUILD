@@ -39,18 +39,7 @@ java_library(
     srcs = ["StrategyFactory.java"],
     visibility = ["//visibility:public"],
     deps = [
-        "@maven//:org_ta4j_ta4j_core",
-        "@tradestar_protos//:strategies_java_proto",
-    ],
-)
-
-java_library(
-    name = "strategy_factory_impl",
-    srcs = ["StrategyFactoryImpl.java"],
-    visibility = ["//src/test/java:__subpackages__"],
-    deps = [
         ":strategy_converter",
-        ":strategy_factory",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_inject_guice",
         "@maven//:org_ta4j_ta4j_core",

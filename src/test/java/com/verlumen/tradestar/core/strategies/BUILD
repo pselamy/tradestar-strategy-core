@@ -7,7 +7,7 @@ java_junit5_test(
     test_package = "com.verlumen.tradestar.core.strategies",
     deps = [
         "//src/main/java/com/verlumen/tradestar/core/strategies:strategy_converter",
-        "//src/main/java/com/verlumen/tradestar/core/strategies:strategy_factory_impl",
+        "//src/main/java/com/verlumen/tradestar/core/strategies:strategy_factory",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_inject_guice",
         "@maven//:com_google_truth_truth",
