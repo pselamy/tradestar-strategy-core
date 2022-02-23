@@ -24,7 +24,7 @@ import static java.util.Arrays.stream;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class StrategyFactoryImplTest {
+class StrategyFactoryTest {
     private static final ImmutableMap<TradeStrategy.StrategyOneOfCase,
             TradeStrategy> TRADE_STRATEGIES =
             ImmutableMap.<TradeStrategy.StrategyOneOfCase,
@@ -46,7 +46,7 @@ class StrategyFactoryImplTest {
     private static final BaseBarSeries FAKE_BAR_SERIES = new BaseBarSeriesBuilder().build();
 
     @Inject
-    private StrategyFactoryImpl strategyFactory;
+    private StrategyFactory strategyFactory;
 
     @BeforeEach
     void setup() {
