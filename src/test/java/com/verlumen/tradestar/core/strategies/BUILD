@@ -22,8 +22,9 @@ java_junit5_test(
     srcs = glob(["StrategyFactoryTest.java"]),
     test_package = "com.verlumen.tradestar.core.strategies",
     deps = [
-        "//src/main/java/com/verlumen/tradestar/core/strategies:strategy_converter",
+        "//src/main/java/com/verlumen/tradestar/core/strategies:rule_factory",
         "//src/main/java/com/verlumen/tradestar/core/strategies:strategy_factory",
+        "//src/main/java/com/verlumen/tradestar/core/strategies:trade_strategy_id",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_inject_guice",
         "@maven//:com_google_truth_truth",

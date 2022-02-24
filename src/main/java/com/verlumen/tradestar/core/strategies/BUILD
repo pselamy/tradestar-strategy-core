@@ -49,6 +49,7 @@ java_library(
 java_library(
     name = "rule_factory",
     srcs = ["RuleFactory.java"],
+    visibility = ["//src/test/java:__subpackages__"],
     deps = [
         "@maven//:org_ta4j_ta4j_core",
         "@tradestar_protos//:strategies_java_proto",
@@ -83,7 +84,9 @@ java_library(
     srcs = ["StrategyFactory.java"],
     visibility = ["//visibility:public"],
     deps = [
-        ":strategy_converter",
+        "trade_strategy_id",
+        ":rule_factory",
+        ":strategy_one_of_cases",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_inject_guice",
         "@maven//:org_ta4j_ta4j_core",
@@ -103,6 +106,7 @@ java_library(
 java_library(
     name = "trade_strategy_id",
     srcs = ["TradeStrategyIdentifier.java"],
+    visibility = ["//src/test/java:__subpackages__"],
     deps = [
         "@maven//:com_google_guava_guava",
         "@tradestar_protos//:strategies_java_proto",
