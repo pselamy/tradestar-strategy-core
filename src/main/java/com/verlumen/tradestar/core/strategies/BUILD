@@ -64,3 +64,12 @@ java_library(
         "@tradestar_protos//:strategies_java_proto",
     ],
 )
+
+java_library(
+    name = "strategy_one_of_cases",
+    srcs = ["StrategyOneOfCases.java"],
+    deps = [
+        "@maven//:com_google_guava_guava",
+        "@tradestar_protos//:strategies_java_proto",
+    ],
+)
