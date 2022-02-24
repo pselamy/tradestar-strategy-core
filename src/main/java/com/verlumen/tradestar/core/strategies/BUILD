@@ -11,6 +11,16 @@ java_library(
 )
 
 java_library(
+    name = "rule_factory",
+    srcs = ["RuleFactory.java"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@maven//:org_ta4j_ta4j_core",
+        "@tradestar_protos//:strategies_java_proto",
+    ],
+)
+
+java_library(
     name = "strategies_module",
     srcs = ["StrategiesModule.java"],
     visibility = ["//visibility:public"],
@@ -28,16 +38,6 @@ java_library(
     visibility = ["//src/test/java:__subpackages__"],
     deps = [
         "@maven//:com_google_guava_guava",
-        "@maven//:org_ta4j_ta4j_core",
-        "@tradestar_protos//:strategies_java_proto",
-    ],
-)
-
-java_library(
-    name = "rule_factory",
-    srcs = ["RuleFactory.java"],
-    visibility = ["//visibility:public"],
-    deps = [
         "@maven//:org_ta4j_ta4j_core",
         "@tradestar_protos//:strategies_java_proto",
     ],
