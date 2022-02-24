@@ -34,6 +34,16 @@ java_library(
 )
 
 java_library(
+    name = "rule_factory",
+    srcs = ["RuleFactory.java"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@maven//:org_ta4j_ta4j_core",
+        "@tradestar_protos//:strategies_java_proto",
+    ],
+)
+
+java_library(
     name = "strategy_factory",
     srcs = ["StrategyFactory.java"],
     visibility = ["//visibility:public"],
