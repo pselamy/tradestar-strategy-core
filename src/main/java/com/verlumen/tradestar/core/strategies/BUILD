@@ -1,4 +1,19 @@
 java_library(
+    name = "adx_rule_factory",
+    srcs = ["AdxRuleFactory.java"],
+    visibility = ["//src/test/java:__subpackages__"],
+    deps = [
+        ":indicator_factory",
+        ":rule_factory",
+        ":strategy_one_of_cases",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_inject_guice",
+        "@maven//:org_ta4j_ta4j_core",
+        "@tradestar_protos//:strategies_java_proto",
+    ],
+)
+
+java_library(
     name = "adx_strategy_converter",
     srcs = ["AdxStrategyConverter.java"],
     visibility = ["//src/test/java:__subpackages__"],
