@@ -14,18 +14,6 @@ java_library(
 )
 
 java_library(
-    name = "adx_strategy_converter",
-    srcs = ["AdxStrategyConverter.java"],
-    visibility = ["//src/test/java:__subpackages__"],
-    deps = [
-        ":strategy_converter",
-        "@maven//:com_google_guava_guava",
-        "@maven//:org_ta4j_ta4j_core",
-        "@tradestar_protos//:strategies_java_proto",
-    ],
-)
-
-java_library(
     name = "indicator_factory",
     srcs = ["IndicatorFactory.java"],
     visibility = ["//src/test/java:__subpackages__"],
@@ -66,17 +54,6 @@ java_library(
         ":indicator_factory_provider",
         ":rule_factory",
         "@maven//:com_google_inject_guice",
-    ],
-)
-
-java_library(
-    name = "strategy_converter",
-    srcs = ["StrategyConverter.java"],
-    visibility = ["//src/test/java:__subpackages__"],
-    deps = [
-        "@maven//:com_google_guava_guava",
-        "@maven//:org_ta4j_ta4j_core",
-        "@tradestar_protos//:strategies_java_proto",
     ],
 )
 
