@@ -61,9 +61,10 @@ java_library(
     srcs = ["StrategiesModule.java"],
     visibility = ["//visibility:public"],
     deps = [
-        ":adx_strategy_converter",
-        ":strategy_converter",
-        ":strategy_factory",
+        ":adx_rule_factory",
+        ":indicator_factory",
+        ":indicator_factory_provider",
+        ":rule_factory",
         "@maven//:com_google_inject_guice",
     ],
 )
