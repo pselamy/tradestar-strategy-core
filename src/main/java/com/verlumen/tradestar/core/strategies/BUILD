@@ -88,3 +88,12 @@ java_library(
         "@tradestar_protos//:strategies_java_proto",
     ],
 )
+
+java_library(
+    name = "trade_strategy_id",
+    srcs = ["TradeStrategyIdentifier.java"],
+    deps = [
+        "@maven//:com_google_guava_guava",
+        "@tradestar_protos//:strategies_java_proto",
+    ],
+)
