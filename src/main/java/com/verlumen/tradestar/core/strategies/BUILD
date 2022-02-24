@@ -13,6 +13,7 @@ java_library(
 java_library(
     name = "indicator_factory",
     srcs = ["IndicatorFactory.java"],
+    visibility = ["//src/test/java:__subpackages__"],
     deps = [
         "@maven//:org_ta4j_ta4j_core",
         "@tradestar_protos//:strategies_java_proto",
@@ -22,7 +23,6 @@ java_library(
 java_library(
     name = "rule_factory",
     srcs = ["RuleFactory.java"],
-    visibility = ["//visibility:public"],
     deps = [
         "@maven//:org_ta4j_ta4j_core",
         "@tradestar_protos//:strategies_java_proto",
