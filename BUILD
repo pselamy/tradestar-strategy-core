@@ -13,7 +13,7 @@ java_library(
     ],
     neverlink = 1,
     visibility = ["//visibility:public"],
-    exports = [
+    runtime_deps = [
         "@maven//:com_google_auto_value_auto_value",
         "@maven//:com_google_auto_value_auto_value_annotations",
     ],
