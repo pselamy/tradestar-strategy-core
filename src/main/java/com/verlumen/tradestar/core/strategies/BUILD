@@ -49,6 +49,8 @@ java_library(
     srcs = ["StrategiesModule.java"],
     visibility = ["//visibility:public"],
     deps = [
+        "strategy_factory",
+        "strategy_factory_impl",
         ":adx_rule_factory",
         ":indicator_factory",
         ":indicator_factory_provider",
@@ -64,6 +66,22 @@ java_library(
     deps = [
         "trade_strategy_id",
         ":rule_factory",
+        ":strategy_one_of_cases",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_inject_guice",
+        "@maven//:org_ta4j_ta4j_core",
+        "@tradestar_protos//:strategies_java_proto",
+    ],
+)
+
+java_library(
+    name = "strategy_factory_impl",
+    srcs = ["StrategyFactoryImpl.java"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "trade_strategy_id",
+        ":rule_factory",
+        ":strategy_factory",
         ":strategy_one_of_cases",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_inject_guice",

@@ -18,7 +18,7 @@ import static com.google.common.truth.TruthJUnit.assume;
 import static com.google.inject.multibindings.Multibinder.newSetBinder;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class StrategyFactoryTest {
+class StrategyFactoryImplTest {
     private static final Rule BUY_RULE = (i, tradingRecord) -> false;
     private static final Rule SELL_RULE = (i, tradingRecord) -> true;
 
@@ -33,7 +33,7 @@ class StrategyFactoryTest {
                     .build();
 
     @Inject
-    private StrategyFactory strategyFactory;
+    private StrategyFactoryImpl strategyFactory;
 
     @BeforeEach
     void setup() {

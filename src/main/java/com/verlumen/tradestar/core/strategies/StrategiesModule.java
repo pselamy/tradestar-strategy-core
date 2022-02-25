@@ -9,6 +9,8 @@ import static java.util.EnumSet.allOf;
 public class StrategiesModule extends AbstractModule {
     @Override
     protected void configure() {
+        bind(StrategyFactory.class).to(StrategyFactoryImpl.class);
+
         Multibinder<IndicatorFactory> indicatorFactoryBinder =
                 newSetBinder(binder(), IndicatorFactory.class);
         Multibinder<RuleFactory> ruleFactoryBinder =
