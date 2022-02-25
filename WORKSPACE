@@ -37,13 +37,15 @@ git_repository(
     name = "tradestar_protos",
     commit = "835a65045f1fc3353ec4c8035cd8aab8d8c36067",
     remote = "https://github.com/pselamy/tradestar-protos",
-    shallow_since = "1645389653 -0600"
+    shallow_since = "1645389653 -0600",
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = [
+        "com.google.auto.value:auto-value:1.9",
+        "com.google.auto.value:auto-value-annotations:1.9",
         "com.google.guava:guava:31.0.1-jre",
         "com.google.inject:guice:5.0.1",
         "org.ta4j:ta4j-core:0.14",
