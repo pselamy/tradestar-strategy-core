@@ -77,6 +77,7 @@ java_library(
 java_library(
     name = "strategy_factory_impl",
     srcs = ["StrategyFactoryImpl.java"],
+    visibility = ["//src/test/java:__subpackages__"],
     deps = [
         "trade_strategy_id",
         ":rule_factory",
