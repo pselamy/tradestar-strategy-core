@@ -55,6 +55,7 @@ java_library(
         ":indicator_factory",
         ":indicator_factory_provider",
         ":rule_factory",
+        "//src/main/java/com/verlumen/tradestar/core/signalstrength:signal_strength_module",
         "@maven//:com_google_inject_guice",
     ],
 )
