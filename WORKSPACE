@@ -37,7 +37,7 @@ git_repository(
     name = "tradestar_protos",
     commit = "835a65045f1fc3353ec4c8035cd8aab8d8c36067",
     remote = "https://github.com/pselamy/tradestar-protos",
-    shallow_since = "1645389653 -0600",
+    shallow_since = "1645497038 -0600",
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
