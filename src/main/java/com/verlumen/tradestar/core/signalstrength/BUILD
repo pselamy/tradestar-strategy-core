@@ -3,6 +3,7 @@ java_library(
     srcs = ["AdxSignalStrengthSpec.java"],
     visibility = ["//src/main/java/com/verlumen/tradestar/core/strategies:__subpackages__"],
     deps = [
+        ":signal_strength_spec",
         "@maven//:com_google_guava_guava",
         "@maven//:org_ta4j_ta4j_core",
         "@tradestar_protos//:strategies_java_proto",
