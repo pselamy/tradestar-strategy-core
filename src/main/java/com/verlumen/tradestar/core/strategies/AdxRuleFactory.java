@@ -1,8 +1,7 @@
 package com.verlumen.tradestar.core.strategies;
 
-import com.google.common.collect.Range;
 import com.google.inject.Inject;
-import com.verlumen.tradestar.protos.strategies.SignalStrength;
+import com.verlumen.tradestar.core.signalstrength.SignalStrengthSpec;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy.ADX;
 import org.ta4j.core.BarSeries;
@@ -14,60 +13,50 @@ import org.ta4j.core.rules.CrossedUpIndicatorRule;
 import java.util.Set;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static com.verlumen.tradestar.core.strategies.StrategyOneOfCases.getHandlerForSupportedCase;
 
 class AdxRuleFactory implements RuleFactory {
     private final IndicatorFactory indicatorFactory;
+    private final SignalStrengthSpec signalStrengthSpec;
 
     @Inject
-    AdxRuleFactory(Set<IndicatorFactory> indicatorFactories) {
+    AdxRuleFactory(Set<IndicatorFactory> indicatorFactories,
+                   Set<SignalStrengthSpec> signalStrengthSpecs) {
         TradeStrategy.StrategyOneOfCase supportedCase = TradeStrategy.StrategyOneOfCase.ADX;
-        this.indicatorFactory = StrategyOneOfCases.forSupportedCase(
+        this.indicatorFactory = getHandlerForSupportedCase(
                 indicatorFactories, IndicatorFactory::supportedCase, supportedCase);
+        this.signalStrengthSpec = getHandlerForSupportedCase(
+                signalStrengthSpecs, SignalStrengthSpec::supportedCase, supportedCase);
     }
 
     @Override
-    public CrossedUpIndicatorRule buyRule(TradeStrategy params, BarSeries barSeries) {
-        checkArgument(params.getAdx().getBarCount() > 0);
-        SignalStrengthSpec signalStrengthSpec =
-                SignalStrengthSpec.get(params.getAdx().getBuySignalStrength());
+    public CrossedUpIndicatorRule buyRule(TradeStrategy params,
+                                          BarSeries barSeries) {
+        ADX adx = params.getAdx();
+        checkArgument(adx.getBarCount() > 0);
+        checkArgument(adx.getBarCount() < barSeries.getBarCount());
         Indicator<Num> indicator = indicatorFactory.create(barSeries,
-                params.getAdx().getBarCount());
-        return new CrossedUpIndicatorRule(indicator,
-                signalStrengthSpec.range.lowerEndpoint());
+                adx.getBarCount());
+        Num threshold = signalStrengthSpec
+                .range(adx.getBuySignalStrength()).lowerEndpoint();
+        return new CrossedUpIndicatorRule(indicator, threshold);
     }
 
     @Override
     public CrossedDownIndicatorRule sellRule(TradeStrategy params,
                                              BarSeries barSeries) {
-        ADX adxParams = params.getAdx();
-        int barCount = adxParams.getBarCount();
+        ADX adx = params.getAdx();
+        checkArgument(adx.getBarCount() < barSeries.getBarCount());
+        int barCount = adx.getBarCount();
         checkArgument(barCount > 0);
         Indicator<Num> indicator = indicatorFactory.create(barSeries, barCount);
-        SignalStrengthSpec signalStrengthSpec =
-                SignalStrengthSpec.get(adxParams.getSellSignalStrength());
-        return new CrossedDownIndicatorRule(indicator,
-                signalStrengthSpec.range.upperEndpoint());
+        Num threshold = signalStrengthSpec
+                .range(adx.getSellSignalStrength()).upperEndpoint();
+        return new CrossedDownIndicatorRule(indicator, threshold);
     }
 
     @Override
     public TradeStrategy.StrategyOneOfCase supportedCase() {
         return TradeStrategy.StrategyOneOfCase.ADX;
-    }
-
-    enum SignalStrengthSpec {
-        WEAK(0, 25),
-        STRONG(25, 50),
-        VERY_STRONG(50, 75),
-        EXTREMELY_STRONG(75, 100);
-
-        private final Range<Integer> range;
-
-        SignalStrengthSpec(int lower, int upper) {
-            this.range = Range.closedOpen(lower, upper);
-        }
-
-        static SignalStrengthSpec get(SignalStrength signalStrength) {
-            return SignalStrengthSpec.valueOf(signalStrength.name());
-        }
     }
 }

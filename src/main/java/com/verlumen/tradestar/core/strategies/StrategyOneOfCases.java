@@ -16,7 +16,7 @@ public class StrategyOneOfCases {
         return set.stream().collect(toImmutableMap(keyFunction, identity()));
     }
 
-    static  <T> T forSupportedCase(Set<T> set, Function<T,
+    static  <T> T getHandlerForSupportedCase(Set<T> set, Function<T,
             TradeStrategy.StrategyOneOfCase> keyFunction, TradeStrategy.StrategyOneOfCase supportedCase) {
         return Optional.ofNullable(keyBySupportedCase(set, keyFunction)
                         .get(supportedCase))

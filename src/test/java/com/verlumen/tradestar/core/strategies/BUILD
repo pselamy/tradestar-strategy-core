@@ -6,6 +6,7 @@ java_junit5_test(
     srcs = glob(["AdxRuleFactoryTest.java"]),
     test_package = "com.verlumen.tradestar.core.strategies",
     deps = [
+        "//src/main/java/com/verlumen/tradestar/core/signalstrength:signal_strength_module",
         "//src/main/java/com/verlumen/tradestar/core/strategies:adx_rule_factory",
         "//src/main/java/com/verlumen/tradestar/core/strategies:indicator_factory",
         "@maven//:com_google_guava_guava",
