@@ -1,9 +1,8 @@
 package com.verlumen.tradestar.core.rules;
 
 import com.google.inject.Inject;
+import com.verlumen.tradestar.core.indicators.IndicatorFactory;
 import com.verlumen.tradestar.core.signalstrength.SignalStrengthSpec;
-import com.verlumen.tradestar.core.strategies.IndicatorFactory;
-import com.verlumen.tradestar.core.strategies.RuleFactory;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy.ADX;
 import org.ta4j.core.BarSeries;
@@ -17,7 +16,7 @@ import java.util.Set;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.verlumen.tradestar.core.strategies.StrategyOneOfCases.getHandlerForSupportedCase;
 
-public class AdxRuleFactory implements RuleFactory {
+class AdxRuleFactory implements RuleFactory {
     private final IndicatorFactory indicatorFactory;
     private final SignalStrengthSpec signalStrengthSpec;
 
