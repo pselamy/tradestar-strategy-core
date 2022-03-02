@@ -2,6 +2,7 @@ package com.verlumen.tradestar.core.strategies;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
+import com.verlumen.tradestar.core.rules.AdxRuleFactory;
 import com.verlumen.tradestar.core.signalstrength.SignalStrengthModule;
 
 import static com.google.inject.multibindings.Multibinder.newSetBinder;

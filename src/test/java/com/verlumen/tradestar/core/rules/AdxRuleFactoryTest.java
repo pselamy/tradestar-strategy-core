@@ -1,4 +1,4 @@
-package com.verlumen.tradestar.core.strategies;
+package com.verlumen.tradestar.core.rules;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -7,6 +7,8 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.verlumen.tradestar.core.signalstrength.SignalStrengthModule;
+import com.verlumen.tradestar.core.strategies.AdxRuleFactory;
+import com.verlumen.tradestar.core.strategies.IndicatorFactory;
 import com.verlumen.tradestar.protos.strategies.SignalStrength;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
 import org.junit.jupiter.api.BeforeEach;

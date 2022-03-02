@@ -1,7 +1,9 @@
-package com.verlumen.tradestar.core.strategies;
+package com.verlumen.tradestar.core.rules;
 
 import com.google.inject.Inject;
 import com.verlumen.tradestar.core.signalstrength.SignalStrengthSpec;
+import com.verlumen.tradestar.core.strategies.IndicatorFactory;
+import com.verlumen.tradestar.core.strategies.RuleFactory;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy.ADX;
 import org.ta4j.core.BarSeries;

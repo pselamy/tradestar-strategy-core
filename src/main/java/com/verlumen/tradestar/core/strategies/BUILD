@@ -1,20 +1,4 @@
 java_library(
-    name = "adx_rule_factory",
-    srcs = ["AdxRuleFactory.java"],
-    visibility = ["//src/test/java:__subpackages__"],
-    deps = [
-        ":indicator_factory",
-        ":rule_factory",
-        ":strategy_one_of_cases",
-        "//src/main/java/com/verlumen/tradestar/core/signalstrength:signal_strength_spec",
-        "@maven//:com_google_guava_guava",
-        "@maven//:com_google_inject_guice",
-        "@maven//:org_ta4j_ta4j_core",
-        "@tradestar_protos//:strategies_java_proto",
-    ],
-)
-
-java_library(
     name = "indicator_factory",
     srcs = ["IndicatorFactory.java"],
     visibility = ["//src/test/java:__subpackages__"],
@@ -52,11 +36,10 @@ java_library(
     deps = [
         "strategy_factory",
         "strategy_factory_impl",
-        ":adx_rule_factory",
         ":indicator_factory",
         ":indicator_factory_provider",
         ":rule_factory",
-        "//src/main/java/com/verlumen/tradestar/core/signalstrength:signal_strength_module",
+        "//src/main/java/com/verlumen/tradestar/core/rules:adx_rule_factory",
         "@maven//:com_google_inject_guice",
     ],
 )
