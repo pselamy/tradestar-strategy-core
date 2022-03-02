@@ -3,6 +3,7 @@ package com.verlumen.tradestar.core.strategies;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
+import com.verlumen.tradestar.core.rules.RuleFactory;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
 import org.ta4j.core.BarSeries;
 import org.ta4j.core.BaseStrategy;

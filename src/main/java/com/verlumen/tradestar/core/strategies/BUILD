@@ -1,45 +1,13 @@
 java_library(
-    name = "indicator_factory",
-    srcs = ["IndicatorFactory.java"],
-    visibility = ["//src/test/java:__subpackages__"],
-    deps = [
-        "@maven//:org_ta4j_ta4j_core",
-        "@tradestar_protos//:strategies_java_proto",
-    ],
-)
-
-java_library(
-    name = "indicator_factory_provider",
-    srcs = ["IndicatorFactoryProvider.java"],
-    deps = [
-        "indicator_factory",
-        "@maven//:com_google_inject_guice",
-        "@maven//:org_ta4j_ta4j_core",
-        "@tradestar_protos//:strategies_java_proto",
-    ],
-)
-
-java_library(
-    name = "rule_factory",
-    srcs = ["RuleFactory.java"],
-    visibility = ["//src/test/java:__subpackages__"],
-    deps = [
-        "@maven//:org_ta4j_ta4j_core",
-        "@tradestar_protos//:strategies_java_proto",
-    ],
-)
-
-java_library(
     name = "strategies_module",
     srcs = ["StrategiesModule.java"],
     visibility = ["//visibility:public"],
     deps = [
-        "strategy_factory",
-        "strategy_factory_impl",
-        ":indicator_factory",
-        ":indicator_factory_provider",
-        ":rule_factory",
-        "//src/main/java/com/verlumen/tradestar/core/rules:adx_rule_factory",
+        ":strategy_factory",
+        ":strategy_factory_impl",
+        "//src/main/java/com/verlumen/tradestar/core/indicators:indicators_module",
+        "//src/main/java/com/verlumen/tradestar/core/rules:rules_module",
+        "//src/main/java/com/verlumen/tradestar/core/signalstrength:signal_strength_module",
         "@maven//:com_google_inject_guice",
     ],
 )
@@ -50,8 +18,8 @@ java_library(
     visibility = ["//visibility:public"],
     deps = [
         "trade_strategy_id",
-        ":rule_factory",
         ":strategy_one_of_cases",
+        "//src/main/java/com/verlumen/tradestar/core/rules:rule_factory",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_inject_guice",
         "@maven//:org_ta4j_ta4j_core",
@@ -65,9 +33,9 @@ java_library(
     visibility = ["//src/test/java:__subpackages__"],
     deps = [
         "trade_strategy_id",
-        ":rule_factory",
         ":strategy_factory",
         ":strategy_one_of_cases",
+        "//src/main/java/com/verlumen/tradestar/core/rules:rule_factory",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_inject_guice",
         "@maven//:org_ta4j_ta4j_core",
@@ -78,6 +46,7 @@ java_library(
 java_library(
     name = "strategy_one_of_cases",
     srcs = ["StrategyOneOfCases.java"],
+    visibility = ["//src/main/java/com/verlumen/tradestar/core:__subpackages__"],
     deps = [
         "@maven//:com_google_guava_guava",
         "@tradestar_protos//:strategies_java_proto",

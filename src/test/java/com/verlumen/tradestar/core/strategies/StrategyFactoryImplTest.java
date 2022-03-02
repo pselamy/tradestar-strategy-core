@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.multibindings.Multibinder;
+import com.verlumen.tradestar.core.rules.RuleFactory;
 import com.verlumen.tradestar.protos.strategies.SignalStrength;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
 import org.junit.jupiter.api.BeforeEach;
