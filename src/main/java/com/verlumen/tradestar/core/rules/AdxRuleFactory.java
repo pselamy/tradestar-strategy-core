@@ -17,7 +17,7 @@ import java.util.Set;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.verlumen.tradestar.core.strategies.StrategyOneOfCases.getHandlerForSupportedCase;
 
-class AdxRuleFactory implements RuleFactory {
+public class AdxRuleFactory implements RuleFactory {
     private final IndicatorFactory indicatorFactory;
     private final SignalStrengthSpec signalStrengthSpec;
 
