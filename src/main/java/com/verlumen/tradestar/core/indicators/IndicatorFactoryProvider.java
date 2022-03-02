@@ -1,4 +1,4 @@
-package com.verlumen.tradestar.core.strategies;
+package com.verlumen.tradestar.core.indicators;
 
 import com.google.inject.Provider;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;

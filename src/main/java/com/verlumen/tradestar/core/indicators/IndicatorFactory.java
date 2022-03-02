@@ -1,4 +1,4 @@
-package com.verlumen.tradestar.core.strategies;
+package com.verlumen.tradestar.core.indicators;
 
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
 import org.ta4j.core.BarSeries;
@@ -7,7 +7,7 @@ import org.ta4j.core.num.Num;
 
 import java.util.function.BiFunction;
 
-interface IndicatorFactory {
+public interface IndicatorFactory {
     static IndicatorFactory create(
             TradeStrategy.StrategyOneOfCase supportedCase,
             BiFunction<BarSeries, Integer, Indicator<Num>> indicatorFunction) {
