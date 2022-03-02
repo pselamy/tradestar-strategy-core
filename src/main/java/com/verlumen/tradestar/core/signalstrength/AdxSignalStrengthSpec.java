@@ -6,7 +6,7 @@ import com.verlumen.tradestar.protos.strategies.TradeStrategy;
 import org.ta4j.core.num.DecimalNum;
 import org.ta4j.core.num.Num;
 
-public class AdxSignalStrengthSpec implements SignalStrengthSpec {
+class AdxSignalStrengthSpec implements SignalStrengthSpec {
     @Override
     public Range<Num> range(SignalStrength signalStrength) {
         return Spec.get(signalStrength).range;
