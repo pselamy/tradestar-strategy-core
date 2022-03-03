@@ -21,11 +21,10 @@ class AdxRuleFactory implements RuleFactory {
     private final SignalStrengthSpec signalStrengthSpec;
 
     @Inject
-    AdxRuleFactory(Set<IndicatorFactory> indicatorFactories,
+    AdxRuleFactory(IndicatorFactory indicatorFactory,
                    Set<SignalStrengthSpec> signalStrengthSpecs) {
         TradeStrategy.StrategyOneOfCase supportedCase = TradeStrategy.StrategyOneOfCase.ADX;
-        this.indicatorFactory = getHandlerForSupportedCase(
-                indicatorFactories, IndicatorFactory::supportedCase, supportedCase);
+        this.indicatorFactory = indicatorFactory;
         this.signalStrengthSpec = getHandlerForSupportedCase(
                 signalStrengthSpecs, SignalStrengthSpec::supportedCase, supportedCase);
     }
@@ -34,10 +33,8 @@ class AdxRuleFactory implements RuleFactory {
     public CrossedUpIndicatorRule buyRule(TradeStrategy params,
                                           BarSeries barSeries) {
         ADX adx = params.getAdx();
-        checkArgument(adx.getBarCount() > 0);
-        checkArgument(adx.getBarCount() < barSeries.getBarCount());
-        Indicator<Num> indicator = indicatorFactory.create(barSeries,
-                adx.getBarCount());
+
+        Indicator<Num> indicator = indicatorFactory.create(params, barSeries);
         Num threshold = signalStrengthSpec
                 .range(adx.getBuySignalStrength()).lowerEndpoint();
         return new CrossedUpIndicatorRule(indicator, threshold);
@@ -50,7 +47,7 @@ class AdxRuleFactory implements RuleFactory {
         checkArgument(adx.getBarCount() < barSeries.getBarCount());
         int barCount = adx.getBarCount();
         checkArgument(barCount > 0);
-        Indicator<Num> indicator = indicatorFactory.create(barSeries, barCount);
+        Indicator<Num> indicator = indicatorFactory.create(params, barSeries);
         Num threshold = signalStrengthSpec
                 .range(adx.getSellSignalStrength()).upperEndpoint();
         return new CrossedDownIndicatorRule(indicator, threshold);

@@ -28,7 +28,6 @@ import java.util.stream.Stream;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.TruthJUnit.assume;
-import static com.google.inject.multibindings.Multibinder.newSetBinder;
 import static java.lang.Math.random;
 import static java.util.Arrays.stream;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -185,21 +184,15 @@ public class AdxRuleFactoryTest {
 
     private static class FakeIndicatorFactory implements IndicatorFactory {
         @Override
-        public Indicator<Num> create(BarSeries barSeries, int barCount) {
+        public Indicator<Num> create(TradeStrategy tradeStrategy, BarSeries barSeries) {
             return INDICATOR;
-        }
-
-        @Override
-        public TradeStrategy.StrategyOneOfCase supportedCase() {
-            return TradeStrategy.StrategyOneOfCase.ADX;
         }
     }
 
     private static class TestModule extends AbstractModule {
         @Override
         protected void configure() {
-            newSetBinder(binder(), IndicatorFactory.class)
-                    .addBinding().to(FakeIndicatorFactory.class);
+            bind(IndicatorFactory.class).to(FakeIndicatorFactory.class);
         }
     }
 }

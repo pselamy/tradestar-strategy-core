@@ -12,10 +12,14 @@ java_library(
 )
 
 java_library(
-    name = "indicator_factory_provider",
-    srcs = ["IndicatorFactoryProvider.java"],
+    name = "indicator_factory_impl",
+    srcs = ["IndicatorFactoryImpl.java"],
+    visibility = [
+        "//src/test/java/com/verlumen/tradestar/core/indicators:__subpackages__",
+    ],
     deps = [
-        "indicator_factory",
+        ":indicator_factory",
+        "@maven//:com_google_guava_guava",
         "@maven//:com_google_inject_guice",
         "@maven//:org_ta4j_ta4j_core",
         "@tradestar_protos//:strategies_java_proto",
@@ -30,8 +34,8 @@ java_library(
         "//src/test/java:__subpackages__",
     ],
     deps = [
-        "indicator_factory_provider",
         ":indicator_factory",
+        ":indicator_factory_impl",
         "@maven//:com_google_inject_guice",
     ],
 )
