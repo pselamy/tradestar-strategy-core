@@ -27,4 +27,6 @@ public interface IndicatorFactory {
     Indicator<Num> create(BarSeries barSeries, int barCount);
 
     TradeStrategy.StrategyOneOfCase supportedCase();
+
+    interface Adapter {}
 }
