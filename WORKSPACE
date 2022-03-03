@@ -44,6 +44,8 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = [
+        "com.google.auto.value:auto-value:1.9",
+        "com.google.auto.value:auto-value-annotations:1.9",
         "com.google.guava:guava:31.0.1-jre",
         "com.google.inject:guice:5.0.1",
         "org.ta4j:ta4j-core:0.14",
