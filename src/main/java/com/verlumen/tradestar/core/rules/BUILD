@@ -15,6 +15,18 @@ java_library(
 )
 
 java_library(
+    name = "composite_rule_factory",
+    srcs = ["CompositeRuleFactory.java"],
+    deps = [
+        ":rule_factory",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_inject_guice",
+        "@maven//:org_ta4j_ta4j_core",
+        "@tradestar_protos//:strategies_java_proto",
+    ],
+)
+
+java_library(
     name = "rule_factory",
     srcs = ["RuleFactory.java"],
     visibility = [
@@ -36,6 +48,7 @@ java_library(
     ],
     deps = [
         ":adx_rule_factory",
+        ":composite_rule_factory",
         ":rule_factory",
         "@maven//:com_google_inject_guice",
     ],
