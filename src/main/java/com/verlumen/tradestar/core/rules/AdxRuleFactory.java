@@ -13,7 +13,6 @@ import org.ta4j.core.rules.CrossedUpIndicatorRule;
 
 import java.util.Set;
 
-import static com.google.common.base.Preconditions.checkArgument;
 import static com.verlumen.tradestar.core.strategies.StrategyOneOfCases.getHandlerForSupportedCase;
 
 class AdxRuleFactory implements RuleFactory {
@@ -33,7 +32,6 @@ class AdxRuleFactory implements RuleFactory {
     public CrossedUpIndicatorRule buyRule(TradeStrategy params,
                                           BarSeries barSeries) {
         ADX adx = params.getAdx();
-
         Indicator<Num> indicator = indicatorFactory.create(params, barSeries);
         Num threshold = signalStrengthSpec
                 .range(adx.getBuySignalStrength()).lowerEndpoint();
@@ -44,9 +42,6 @@ class AdxRuleFactory implements RuleFactory {
     public CrossedDownIndicatorRule sellRule(TradeStrategy params,
                                              BarSeries barSeries) {
         ADX adx = params.getAdx();
-        checkArgument(adx.getBarCount() < barSeries.getBarCount());
-        int barCount = adx.getBarCount();
-        checkArgument(barCount > 0);
         Indicator<Num> indicator = indicatorFactory.create(params, barSeries);
         Num threshold = signalStrengthSpec
                 .range(adx.getSellSignalStrength()).upperEndpoint();
