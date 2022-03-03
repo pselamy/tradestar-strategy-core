@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.verlumen.tradestar.core.rules.RuleFactory;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
+import com.verlumen.tradestar.protos.strategies.TradeStrategy.StrategyOneOfCase;
 import org.ta4j.core.BarSeries;
 import org.ta4j.core.BaseStrategy;
 import org.ta4j.core.Rule;
@@ -18,13 +19,12 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.verlumen.tradestar.core.strategies.StrategyOneOfCases.keyBySupportedCase;
 
 class StrategyFactoryImpl implements StrategyFactory {
-    private static final ImmutableSet<TradeStrategy.StrategyOneOfCase>
+    private static final ImmutableSet<StrategyOneOfCase>
             SUPPORTED_CASES = ImmutableSet.copyOf(EnumSet.complementOf(
-            EnumSet.of(
-                    TradeStrategy.StrategyOneOfCase.STRATEGYONEOF_NOT_SET,
-                    TradeStrategy.StrategyOneOfCase.COMPOSITE)));
+            EnumSet.of(StrategyOneOfCase.STRATEGYONEOF_NOT_SET,
+                    StrategyOneOfCase.COMPOSITE)));
 
-    private final ImmutableMap<TradeStrategy.StrategyOneOfCase, RuleFactory> ruleFactories;
+    private final ImmutableMap<StrategyOneOfCase, RuleFactory> ruleFactories;
 
     @Inject
     StrategyFactoryImpl(Set<RuleFactory> ruleFactories) {
@@ -50,8 +50,7 @@ class StrategyFactoryImpl implements StrategyFactory {
         return TradeStrategyIdentifier.get(params.getStrategyOneOfCase()).name(params);
     }
 
-    private RuleFactory ruleFactory(
-            TradeStrategy.StrategyOneOfCase strategyOneOfCase) {
+    private RuleFactory ruleFactory(StrategyOneOfCase strategyOneOfCase) {
         return Optional.ofNullable(ruleFactories.get(strategyOneOfCase))
                 .orElseThrow(IllegalArgumentException::new);
     }
