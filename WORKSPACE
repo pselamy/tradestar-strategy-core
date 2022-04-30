@@ -23,15 +23,17 @@ git_repository(
 )
 
 git_repository(
-    name = "com_google_protobuf",
-    commit = "498de9f761bef56a032815ee44b6e6dbe0892cc4",
-    remote = "https://github.com/protocolbuffers/protobuf",
-    shallow_since = "1580681072 -0800",
+    name = "rules_proto",
+    commit = "3212323502e21b819ac4fbdd455cb227ad0f6394",
+    remote = "https://github.com/bazelbuild/rules_proto",
+    shallow_since = "1649153521 +0200",
 )
 
-load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 
-protobuf_deps()
+rules_proto_dependencies()
+
+rules_proto_toolchains()
 
 git_repository(
     name = "tradestar_protos",
