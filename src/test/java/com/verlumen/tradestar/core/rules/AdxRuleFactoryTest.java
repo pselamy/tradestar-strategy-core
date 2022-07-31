@@ -6,11 +6,13 @@ import com.google.common.collect.Range;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
+import com.google.testing.junit.testparameterinjector.TestParameter;
+import com.google.testing.junit.testparameterinjector.TestParameterInjector;
 import com.verlumen.tradestar.core.indicators.IndicatorFactory;
 import com.verlumen.tradestar.core.signalstrength.SignalStrengthModule;
 import com.verlumen.tradestar.protos.strategies.SignalStrength;
 import com.verlumen.tradestar.protos.strategies.TradeStrategy;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Before;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -32,6 +34,7 @@ import static java.lang.Math.random;
 import static java.util.Arrays.stream;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@RunWith(TestParameterInjector.class)
 public class AdxRuleFactoryTest {
     private static final ImmutableMap<SignalStrength, Range<Integer>>
             ADX_VALUES_BY_SIGNAl_STRENGTH = ImmutableMap.of(
@@ -82,7 +85,7 @@ public class AdxRuleFactoryTest {
                                 Arguments.of(signalStrength1, signalStrength2)));
     }
 
-    @BeforeEach
+    @Before
     void setup() {
         Guice.createInjector(
                         new SignalStrengthModule(),
